@@ -55,5 +55,4 @@ public class MainPage {
         return driver.findElement(toppingSection).getAttribute("class").contains("current");
     }
 
-
 }
