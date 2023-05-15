@@ -13,12 +13,12 @@ public class MainPage {
     private final By personalAccountButton = By.xpath(".//p[(@class='AppHeader_header__linkText__3q_va ml-2' and text()='Личный Кабинет')]");
 
     //раздел "Булки"
-    private final By breadSection = By.xpath(".//span[(@class='text text_type_main-default' and text()='Булки')]");
+    private final By breadSection = By.xpath(".//span[text()='Булки']/..");
 
     //раздел "Соусы"
-    private final By sauceSection = By.xpath(".//span[(@class='text text_type_main-default' and text()='Соусы')]");
+    private final By sauceSection = By.xpath(".//span[text()='Соусы']/..");
     //раздел "Начинки"
-    private final By toppingSection = By.xpath(".//span[(@class='text text_type_main-default' and text()='Начинки')]");
+    private final By toppingSection = By.xpath(".//span[text()='Начинки']/..");
 
 
     public MainPage(WebDriver driver) {
@@ -52,6 +52,7 @@ public class MainPage {
         return driver.findElement(sauceSection).getAttribute("class").contains("current");
     }
     public boolean selectToppingSectionButton(){
+        driver.findElement(toppingSection).click();
         return driver.findElement(toppingSection).getAttribute("class").contains("current");
     }
 
