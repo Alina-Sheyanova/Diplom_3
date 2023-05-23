@@ -24,7 +24,7 @@ public class BaseTest {
 //
          driver = new SafariDriver();
 //
-        //открыть страницу Яндекс.Самокаты
+        //открыть страницу
         driver.get(URL);
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
     }

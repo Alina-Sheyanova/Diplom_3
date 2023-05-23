@@ -12,20 +12,20 @@ public class NavigatingSectionsConstructorTest extends BaseTest{
         MainPage mainPage = new MainPage(driver);
         mainPage.pushSauceSection();
         mainPage.pushBreadSection();
-        assertTrue("Выбрана вкладка булок", mainPage.selectBreadSectionButton());
+        assertTrue("Не выбрана вкладка булок", mainPage.selectBreadSectionButton());
     }
     @Test
     public void checkSauceSection(){
         MainPage mainPage = new MainPage(driver);
         mainPage.pushSauceSection();
-        assertTrue("Выбрана вкладка соусов", mainPage.selectSauceSectionButton());
+        assertTrue("Не выбрана вкладка соусов", mainPage.selectSauceSectionButton());
     }
 
     @Test
     public void checkToppingSection(){
         MainPage mainPage = new MainPage(driver);
         mainPage.pushToppingSection();
-        assertTrue("Выбрана вкладка начинок", mainPage.selectToppingSectionButton());
+        assertTrue("Не выбрана вкладка начинок", mainPage.selectToppingSectionButton());
     }
 
 
