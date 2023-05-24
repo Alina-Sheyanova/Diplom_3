@@ -10,6 +10,6 @@ public class ApiEndpoints {
     public static String CREATE_ORDER = "/orders";
     public static String ALL_ORDERS = "/orders/all";
     public static String UPDATE_USER_AUTH_TOKEN = "/auth/token";
-
+    public final static String YANDEX_DRIVER = "src/main/resources/yandexdriver.exe";
 
 }
