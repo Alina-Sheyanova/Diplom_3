@@ -8,6 +8,8 @@ import org.openqa.selenium.WebDriver;
 import pageobjects.MainPage;
 import setup.SetUpWebDriver;
 
+import java.util.concurrent.TimeUnit;
+
 import static org.junit.Assert.assertTrue;
 
 public class NavigatingSectionsConstructorTest {
@@ -18,6 +20,7 @@ public class NavigatingSectionsConstructorTest {
         driver = SetUpWebDriver.setUpWDM();
         mainPage = new MainPage(driver);
         driver.get(ApiEndpoints.BASE_URL);
+        driver.manage().timeouts().implicitlyWait(2, TimeUnit.SECONDS);
     }
 
     @Test

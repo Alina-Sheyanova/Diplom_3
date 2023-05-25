@@ -9,6 +9,8 @@ import org.openqa.selenium.chrome.ChromeOptions;
 import java.util.concurrent.TimeUnit;
 
 public class SetUpWebDriver {
+    //private static String browser = "yandex";
+    //private static String browser = "chrome";
     public static WebDriver setUpWDM() {
         WebDriverManager.chromedriver().setup();
         if (System.getProperty("browser.type") != null && System.getProperty("browser.type").equals("yandex")) {
