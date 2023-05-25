@@ -1,5 +1,3 @@
-package uitest;
-
 import constans.ApiEndpoints;
 import io.restassured.RestAssured;
 import io.restassured.response.Response;
@@ -27,6 +25,17 @@ public class RegistrationTest {
         driver.get(ApiEndpoints.BASE_URL + ApiEndpoints.CREATE_USER);
         signUpPage.waitingForSignUpPageLoading();
     }
+    @After
+    public void tearDown() {
+        if(driver != null){
+            driver.quit();
+        }
+    }
+    @AfterClass
+    public static void afterClass() {
+        UserSteps.deleteUser(accessToken);
+    }
+
 
     @Test
     public void signUpTest() {
@@ -52,14 +61,5 @@ public class RegistrationTest {
         Response response = UserSteps.authUser(user);
         Assert.assertFalse("Не удалось залогиниться с данными созданного пользователя", response.path("success"));
     }
-    @AfterClass
-    public static void afterClass() {
-        UserSteps.deleteUser(accessToken);
-    }
-    @After
-    public void tearDown() {
-        if(driver != null){
-            driver.quit();
-        }
-    }
+
 }
