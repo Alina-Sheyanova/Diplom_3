@@ -9,12 +9,10 @@ import org.openqa.selenium.chrome.ChromeOptions;
 import java.util.concurrent.TimeUnit;
 
 public class SetUpWebDriver {
-    //private static String browser = "yandex";
-    //private static String browser = "chrome";
     public static WebDriver setUpWDM() {
         WebDriverManager.chromedriver().setup();
         if (System.getProperty("browser.type") != null && System.getProperty("browser.type").equals("yandex")) {
-            System.setProperty("webdriver.chrome.driver", ApiEndpoints.YANDEX_DRIVER);
+            System.setProperty("webdriver.chrome.driver", ApiEndpoints.YANDEXDRIVER);
         }
         ChromeOptions options = new ChromeOptions();
         options.addArguments("--no-sandbox", "--headless", "--disable-dev-shm-usage");

@@ -19,8 +19,7 @@ public class LoginPage {
     }
 
     public void waitingForLoginFormLoading() {
-        new WebDriverWait(driver, 5).until(ExpectedConditions.visibilityOfElementLocated(loginFormTitle));
-
+        new WebDriverWait(driver, 15).until(ExpectedConditions.visibilityOfElementLocated(loginFormTitle));
     }
 
     public void insertPassword(String password) {

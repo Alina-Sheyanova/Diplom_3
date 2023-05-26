@@ -25,8 +25,9 @@ public class UserSteps {
 
     @Step("Удаление пользователя")
     public static Response deleteUser(String authToken) {
+        String URIaddress = ApiEndpoints.API_USER;
         return given()
                 .header("Authorization", authToken)
-                .delete(ApiEndpoints.API_USER);
+                .delete(URIaddress);
     }
 }

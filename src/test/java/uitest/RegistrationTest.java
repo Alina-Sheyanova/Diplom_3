@@ -1,3 +1,5 @@
+package uitest;
+
 import constans.ApiEndpoints;
 import io.restassured.RestAssured;
 import io.restassured.response.Response;
@@ -22,7 +24,7 @@ public class RegistrationTest {
         RestAssured.baseURI = ApiEndpoints.BASE_URL;
         driver = SetUpWebDriver.setUpWDM();
         signUpPage = new SignUpPage(driver);
-        driver.get(ApiEndpoints.BASE_URL + ApiEndpoints.CREATE_USER);
+        driver.get(ApiEndpoints.BASE_URL + ApiEndpoints.REGISTER);
         signUpPage.waitingForSignUpPageLoading();
     }
     @After
@@ -44,22 +46,21 @@ public class RegistrationTest {
         signUpPage.insertUserSignUpData(user);
         signUpPage.clickSignUpButton();
         loginPage.waitingForLoginFormLoading();
-        Assert.assertEquals("Перешли на страницу логина", ApiEndpoints.BASE_URL + ApiEndpoints.LOGIN_USER, driver.getCurrentUrl());
+        Assert.assertEquals("Перешли на страницу логина", ApiEndpoints.BASE_URL + ApiEndpoints.LOGIN, driver.getCurrentUrl());
         Response response = UserSteps.authUser(user);
         Assert.assertEquals("Удалось залогиниться с данными созданного пользователя", 200, response.statusCode());
         accessToken = response.path("accessToken");
     }
 
     @Test
-    public void signUpWithShortPasswordTest() {
+    public void signUpWithshortPasswordTest() {
         User user = UserRandom.createNewRandomUser();
         user.setPassword("12345");
         signUpPage.insertUserSignUpData(user);
         signUpPage.clickSignUpButton();
-        Assert.assertTrue("Отображается ошибка о некорректном пароле", signUpPage.checkSignUpWrongPassword());
-        Assert.assertEquals("Остались на странице логина", ApiEndpoints.BASE_URL + ApiEndpoints.CREATE_USER, driver.getCurrentUrl());
+        Assert.assertTrue("Отображается ошибка о некорректном пароле", signUpPage.checkSignUpWrongPasswordError());
+        Assert.assertEquals("Остались на странице логина", ApiEndpoints.BASE_URL + ApiEndpoints.REGISTER, driver.getCurrentUrl());
         Response response = UserSteps.authUser(user);
         Assert.assertFalse("Не удалось залогиниться с данными созданного пользователя", response.path("success"));
     }
-
 }

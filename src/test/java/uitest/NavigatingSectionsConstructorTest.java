@@ -15,31 +15,33 @@ import static org.junit.Assert.assertTrue;
 public class NavigatingSectionsConstructorTest {
     public WebDriver driver;
     public MainPage mainPage;
+
     @Before
     public void setUp() {
         driver = SetUpWebDriver.setUpWDM();
         mainPage = new MainPage(driver);
         driver.get(ApiEndpoints.BASE_URL);
-        driver.manage().timeouts().implicitlyWait(2, TimeUnit.SECONDS);
     }
 
     @Test
-    public void checkBreadSection(){
-        mainPage.pushSauceSection();
-        mainPage.pushBreadSection();
-        assertTrue("Не выбрана вкладка булок", mainPage.selectBreadSectionButton());
-    }
-    @Test
-    public void checkSauceSection(){
-        mainPage.pushSauceSection();
-        assertTrue("Не выбрана вкладка соусов", mainPage.selectSauceSectionButton());
+    public void checkSaucesPass() {
+        mainPage.clickOnSaucesMenu();
+        assertTrue("Выбрана вкладка соусов", mainPage.saucesMenuIsSelected());
     }
 
     @Test
-    public void checkToppingSection(){
-        mainPage.pushToppingSection();
-        assertTrue("Не выбрана вкладка начинок", mainPage.selectToppingSectionButton());
+    public void checkFillingsPass() {
+        mainPage.clickOnFillingsMenu();
+        assertTrue("Выбрана вкладка начинок", mainPage.fillingsMenuIsSelected());
     }
+
+    @Test
+    public void checkBunsPass() {
+        mainPage.clickOnFillingsMenu();
+        mainPage.clickOnBunsMenu();
+        assertTrue("Выбрана вкладка соусов", mainPage.bunsMenuIsSelected());
+    }
+
     @After
     public void tearDown() {
         if(driver != null){

@@ -51,7 +51,7 @@ public class SignUpPage {
         driver.findElement(signInLink).click();
     }
 
-    public boolean checkSignUpWrongPassword() {
+    public boolean checkSignUpWrongPasswordError() {
         return driver.findElement(signUpWrongPasswordMessage).isDisplayed();
     }
 }
