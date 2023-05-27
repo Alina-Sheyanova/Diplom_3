@@ -8,8 +8,6 @@ import org.openqa.selenium.WebDriver;
 import pageobjects.MainPage;
 import setup.SetUpWebDriver;
 
-import java.util.concurrent.TimeUnit;
-
 import static org.junit.Assert.assertTrue;
 
 public class NavigatingSectionsConstructorTest {
