@@ -41,6 +41,7 @@ public class PersonalProfileTest {
     }
     @After
     public void tearDown() {
+
         if(driver != null){
             driver.quit();
         }
